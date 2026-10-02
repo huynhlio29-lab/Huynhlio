@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Cổng thông tin Hội đồng Đội Thành phố Hồ Chí Minh">
+<title>Hội đồng Đội Thành phố Hồ Chí Minh</title>
+<style>
+:root{
+  --red:#d9272e;--red2:#ef5350;--blue:#1698d5;--green:#36a852;
+  --yellow:#f4c542;--navy:#163b59;--ink:#24384a;--muted:#718296;
+  --bg:#f5f8fb;--line:#e5ebf1;--white:#fff;--shadow:0 10px 30px rgba(25,58,85,.09);
+  --radius:18px
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.55}
+a{text-decoration:none;color:inherit}button,input,select{font:inherit}.wrap{width:min(1180px,92%);margin:auto}
+
+/* top bar + header */
+.topbar{background:var(--navy);color:#dbe8f1;font-size:12px}
+.topbar .wrap{height:34px;display:flex;align-items:center;justify-content:space-between}
+header{background:#fff;position:sticky;top:0;z-index:50;box-shadow:0 3px 18px rgba(0,0,0,.07)}
+.head{min-height:112px;display:flex;align-items:center;gap:25px}
+.logo{display:flex;align-items:center;gap:12px;min-width:280px}
+.logo-mark{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-size:30px;font-weight:900;box-shadow:0 5px 14px #0002;border:5px solid #fff}
+.logo strong{display:block;text-transform:uppercase;color:#bd1f26;font-size:15px;line-height:1.2}
+.logo span{display:block;color:#6d7e8d;font-size:11px;margin-top:5px}
+.nav{flex:1;display:flex;justify-content:flex-end;gap:8px}
+.navitem{position:relative}
+.navbtn{border:0;color:#fff;cursor:pointer;height:62px;min-width:118px;border-radius:12px;font-weight:800;font-size:13px;padding:0 13px 8px;display:flex;align-items:flex-end;justify-content:center;position:relative;box-shadow:0 5px 13px #0002;transition:.2s}
+.navbtn:hover{transform:translateY(-2px)}
+.navicon{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:38px;height:38px;background:#fff;color:var(--navy);border-radius:50%;display:grid;place-items:center;box-shadow:0 4px 12px #0002;font-size:18px}
+.r{background:var(--red)}.b{background:var(--blue)}.g{background:var(--green)}.y{background:var(--yellow)}
+.drop{display:none;position:absolute;top:70px;left:0;width:245px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:7px;box-shadow:0 18px 35px #0002}
+.navitem:hover .drop{display:block}.drop a{display:block;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:700}
+.drop a:hover{background:#eef7fb;color:#0877ad}
+
+/* hero */
+.hero{background:
+ radial-gradient(circle at 90% 15%,#f4c54255,transparent 25%),
+ radial-gradient(circle at 5% 90%,#1698d533,transparent 30%),
+ linear-gradient(135deg,#edf8ff,#fff)}
+.hero-grid{min-height:475px;display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center;padding:55px 0}
+.kicker{color:var(--red);font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(36px,5vw,59px);line-height:1.04;color:var(--navy);margin:12px 0 18px}
+.hero p{max-width:650px;color:#586d80;font-size:16px}
+.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;font-weight:800}
+.primary{background:var(--red);color:#fff}.secondary{background:#fff;border:1px solid #d9e3ea;color:var(--navy)}
+.hero-card{height:350px;border-radius:30px;background:#fff;box-shadow:var(--shadow);border:1px solid #dfebf2;position:relative;overflow:hidden}
+.hero-card:before,.hero-card:after{content:"";position:absolute;border-radius:50%}
+.hero-card:before{width:300px;height:300px;background:#1698d51c;right:-100px;top:-80px}
+.hero-card:after{width:220px;height:220px;background:#f4c54235;left:-70px;bottom:-90px}
+.star{position:absolute;inset:0;margin:auto;width:155px;height:155px;background:var(--red);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 56%,79% 91%,50% 70%,21% 91%,32% 56%,2% 35%,39% 35%);display:grid;place-items:center;color:#fff;font-size:58px;font-weight:900}
+
+/* common sections */
+section{padding:62px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
+.section-head h2{margin:0;color:var(--navy);font-size:29px}.section-head p{margin:5px 0 0;color:var(--muted)}
+.more{color:var(--red);font-size:13px;font-weight:900}
+
+/* featured news */
+.featured{display:grid;grid-template-columns:1.35fr .65fr;gap:20px}
+.feature-main,.mini{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.visual{height:270px;background:linear-gradient(135deg,#dff3fb,#fff1c9);display:grid;place-items:center;font-size:62px}
+.feature-body{padding:22px}.tag{display:inline-block;background:#e9f6fb;color:#0877ad;padding:5px 9px;border-radius:20px;font-size:10px;font-weight:900}
+.feature-body h3{font-size:23px;color:var(--navy);margin:10px 0 7px;line-height:1.25}.date{color:#8998a7;font-size:11px}
+.side-news{display:grid;gap:20px}.mini{display:grid;grid-template-columns:105px 1fr}.mini .visual{height:100%;min-height:135px;font-size:34px}.mini-body{padding:15px}.mini h3{margin:6px 0;font-size:15px;line-height:1.35;color:var(--navy)}
+
+/* categories */
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.category{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 16px;text-align:center;box-shadow:var(--shadow);transition:.2s}
+.category:hover{transform:translateY(-4px)}.cat-icon{width:53px;height:53px;border-radius:50%;margin:0 auto 11px;color:#fff;display:grid;place-items:center;font-size:22px}
+.category h3{margin:0;color:var(--navy);font-size:15px}
+
+/* programs */
+.programs{background:#fff}.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.program{border:1px solid var(--line);border-radius:18px;padding:24px;background:linear-gradient(145deg,#fff,#f7fafc)}
+.program .num{font-size:12px;color:var(--red);font-weight:900}.program h3{color:var(--navy);font-size:18px;margin:7px 0}.program p{font-size:13px;color:var(--muted);margin:0}
+
+/* library */
+.library-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.library-card{min-height:185px;border-radius:18px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;box-shadow:var(--shadow);transition:.2s}
+.library-card:hover{transform:translateY(-4px)}.library-card .ico{font-size:36px;margin-bottom:12px}.library-card h3{font-size:14px;margin:0}
+.lib-red{background:linear-gradient(145deg,#e63b42,#c91f27)}.lib-blue{background:linear-gradient(145deg,#25a7dc,#0e82bd)}
+.lib-green{background:linear-gradient(145deg,#48b960,#249440)}.lib-yellow{background:linear-gradient(145deg,#f7ce58,#dda91d);color:#263b4c}
+
+/* docs */
+.docs{background:#f0f6fa}.search{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:18px;padding:22px;margin-bottom:20px}
+.search h3{margin:0 0 14px;color:var(--navy)}.searchgrid{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px}
+input,select{height:45px;border:1px solid #dce5ec;border-radius:9px;padding:0 12px;background:#fff;outline:0}
+.search button{height:45px;border:0;border-radius:9px;background:var(--red);color:#fff;font-weight:900;padding:0 19px;cursor:pointer}
+.table-wrap{overflow:auto;background:#fff;border-radius:16px;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:13px;border-bottom:1px solid #edf1f4;text-align:left;font-size:13px}
+th{background:#f8fafc;color:var(--navy);font-size:11px;text-transform:uppercase}.pdf{color:var(--red);font-weight:900}.download{color:#0877ad;font-weight:900}
+.empty{display:none;text-align:center;padding:30px;color:var(--muted);background:#fff;border-radius:15px}
+
+/* organization */
+.org-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.orgbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:var(--shadow)}
+.orgbox h3{margin-top:0;color:var(--navy)}.orgbox ul{list-style:none;padding:0;margin:0}.orgbox li{padding:9px 0;border-bottom:1px solid #edf1f4;font-size:14px}.orgbox li:last-child{border:0}
+
+/* footer */
+footer{background:#15364f;color:#c9d9e5;padding:43px 0 18px}.footergrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px}footer h3{color:#fff;font-size:16px}footer p,footer li{font-size:13px;color:#b7cad7}footer ul{list-style:none;padding:0}footer li{margin:8px 0}.copy{border-top:1px solid #ffffff1c;margin-top:25px;padding-top:15px;text-align:center;font-size:11px;color:#91a7b7}
+
+/* mobile */
+@media(max-width:1050px){
+ .head{flex-wrap:wrap;padding:14px 0}.nav{width:100%;justify-content:flex-start;overflow:auto;padding:8px 0}.hero-grid{grid-template-columns:1fr}.category-grid{grid-template-columns:repeat(2,1fr)}.library-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:700px){
+ .topbar{display:none}.logo{min-width:0}.logo-mark{width:53px;height:53px;font-size:23px}.logo strong{font-size:12px}.logo span{font-size:9px}
+ .nav{display:grid;grid-template-columns:repeat(2,1fr);overflow:visible}.navbtn{width:100%;min-width:0}.drop{position:static;width:100%;margin-top:5px}.navitem:hover .drop{display:none}.navitem.open .drop{display:block}
+ .hero-grid{padding:42px 0}.hero-card{height:280px}.featured,.org-grid,.footergrid{grid-template-columns:1fr}.category-grid{grid-template-columns:1fr 1fr}.program-grid{grid-template-columns:1fr}.library-grid{grid-template-columns:1fr 1fr}.searchgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap"><span>VÌ TỔ QUỐC XÃ HỘI CHỦ NGHĨA, VÌ LÝ TƯỞNG CỦA BÁC HỒ VĨ ĐẠI, SẴN SÀNG!</span><span>CỔNG THÔNG TIN ĐIỆN TỬ</span></div></div>
+
+<header>
+<div class="wrap head">
+  <a href="#home" class="logo">
+    <div class="logo-mark">★</div>
+    <div><strong>Hội đồng Đội</strong><strong>Thành phố Hồ Chí Minh</strong><span>Cổng thông tin chính thức</span></div>
+  </a>
+
+  <nav class="nav">
+    <div class="navitem"><a class="navbtn r" href="#home"><span class="navicon">⌂</span>TRANG CHỦ</a></div>
+
+    <div class="navitem">
+      <button class="navbtn b"><span class="navicon">📰</span>TIN TỨC</button>
+      <div class="drop">
+        <a href="#news">Tin hoạt động Thành phố</a><a href="#news">Tin hoạt động cơ sở</a>
+        <a href="#news">Tin thiếu nhi</a><a href="#news">Tin Đoàn - Đội</a><a href="#news">Sự kiện</a><a href="#news">Tin nổi bật</a>
+      </div>
+    </div>
+
+    <div class="navitem">
+      <button class="navbtn g"><span class="navicon">★</span>HOẠT ĐỘNG</button>
+      <div class="drop">
+        <a href="#activities">Công tác Đội</a><a href="#activities">Công tác thiếu nhi</a>
+        <a href="#activities">Chương trình</a><a href="#activities">Phong trào</a><a href="#activities">Hội thi</a><a href="#activities">Cuộc thi</a><a href="#activities">Hoạt động trải nghiệm</a>
+      </div>
+    </div>
+
+    <div class="navitem">
+      <button class="navbtn y"><span class="navicon">▣</span>THƯ VIỆN</button>
+      <div class="drop">
+        <a href="#documents">Hệ thống văn bản</a><a href="#library">Thư viện Media</a>
+        <a href="#library">Bộ nhận diện</a><a href="#library">Ấn phẩm</a><a href="#library">Tài liệu nghiệp vụ</a>
+      </div>
+    </div>
+
+    <div class="navitem">
+      <button class="navbtn g"><span class="navicon">♟</span>TỔ CHỨC</button>
+      <div class="drop">
+        <a href="#organization">Giới thiệu HĐĐ Thành phố</a><a href="#organization">Chức năng, nhiệm vụ</a>
+        <a href="#organization">Cơ cấu tổ chức</a><a href="#organization">Thường trực</a><a href="#organization">Hội đồng Huấn luyện</a>
+        <a href="#organization">HĐĐ phường, xã, đặc khu</a>
+      </div>
+    </div>
+  </nav>
+</div>
+</header>
+
+<main id="home">
+<section class="hero">
+<div class="wrap hero-grid">
+  <div>
+    <div class="kicker">HỘI ĐỒNG ĐỘI THÀNH PHỐ HỒ CHÍ MINH</div>
+    <h1>Thiếu nhi Thành phố Bác<br>Vững bước tiến vào kỷ nguyên mới</h1>
+    <p>Cổng thông tin chính thức về công tác Đội, phong trào thiếu nhi, chương trình, hội thi, hoạt động giáo dục và kho tài nguyên nghiệp vụ của Thành phố Hồ Chí Minh.</p>
+    <div class="actions"><a class="btn primary" href="#news">Xem tin mới</a><a class="btn secondary" href="#documents">Tra cứu văn bản</a></div>
+  </div>
+  <div class="hero-card"><div class="star">★</div></div>
+</div>
+</section>
+
+<section id="news">
+<div class="wrap">
+<div class="section-head"><div><h2>TIN TỨC - SỰ KIỆN NỔI BẬT</h2><p>Cập nhật thông tin công tác Đội và phong trào thiếu nhi</p></div><a class="more" href="#">XEM TẤT CẢ →</a></div>
+<div class="featured">
+  <article class="feature-main"><div class="visual">📣</div><div class="feature-body"><span class="tag">TIN NỔI BẬT</span><h3>Nội dung bài viết nổi bật sẽ được quản trị và cập nhật từ hệ thống nội dung.</h3><div class="date">Ngày đăng • Danh mục</div></div></article>
+  <div class="side-news">
+    <article class="mini"><div class="visual">🎒</div><div class="mini-body"><span class="tag">HOẠT ĐỘNG</span><h3>Tin hoạt động Đội tại cơ sở</h3><div class="date">Ngày đăng</div></div></article>
+    <article class="mini"><div class="visual">🌟</div><div class="mini-body"><span class="tag">THIẾU NHI</span><h3>Hoạt động dành cho thiếu nhi Thành phố</h3><div class="date">Ngày đăng</div></div></article>
+  </div>
+</div>
+</div>
+</section>
+
+<section id="activities">
+<div class="wrap">
+<div class="section-head"><div><h2>CÔNG TÁC ĐỘI VÀ PHONG TRÀO THIẾU NHI</h2><p>Các nhóm nội dung trọng tâm</p></div></div>
+<div class="category-grid">
+  <a class="category" href="#"><div class="cat-icon r">★</div><h3>Công tác xây dựng Đội</h3></a>
+  <a class="category" href="#"><div class="cat-icon b">♥</div><h3>Công tác thiếu nhi</h3></a>
+  <a class="category" href="#"><div class="cat-icon g">✓</div><h3>Chương trình</h3></a>
+  <a class="category" href="#"><div class="cat-icon y">◆</div><h3>Phong trào</h3></a>
+  <a class="category" href="#"><div class="cat-icon b">🏆</div><h3>Hội thi - Cuộc thi</h3></a>
+  <a class="category" href="#"><div class="cat-icon r">✦</div><h3>Hoạt động trải nghiệm</h3></a>
+  <a class="category" href="#"><div class="cat-icon g">📚</div><h3>Công tác phụ trách Đội</h3></a>
+  <a class="category" href="#"><div class="cat-icon y">☀</div><h3>Quyền trẻ em</h3></a>
+</div>
+</div>
+</section>
+
+<section class="programs">
+<div class="wrap">
+<div class="section-head"><div><h2>CHƯƠNG TRÌNH TRỌNG TÂM</h2><p>Không gian giới thiệu các chương trình, phong trào, hội thi và hoạt động lớn</p></div><a class="more" href="#">XEM TẤT CẢ →</a></div>
+<div class="program-grid">
+  <article class="program"><div class="num">01 / CHƯƠNG TRÌNH</div><h3>Chương trình công tác Đội và phong trào thiếu nhi</h3><p>Mô tả chương trình, mục tiêu, nội dung và tài liệu liên quan.</p></article>
+  <article class="program"><div class="num">02 / HỘI THI</div><h3>Hội thi, cuộc thi dành cho đội viên và thiếu nhi</h3><p>Trang chi tiết có thể mở rộng thành từng chuyên mục.</p></article>
+  <article class="program"><div class="num">03 / HOẠT ĐỘNG</div><h3>Hoạt động trải nghiệm và giáo dục kỹ năng</h3><p>Kết nối tin bài, hình ảnh, video và tài liệu.</p></article>
+</div>
+</div>
+</section>
+
+<section id="library">
+<div class="wrap">
+<div class="section-head"><div><h2>THƯ VIỆN</h2><p>Kho tài nguyên dành cho công tác Đội và thiếu nhi Thành phố</p></div></div>
+<div class="library-grid">
+<a href="#documents" class="library-card lib-red"><div class="ico">📖</div><h3>HỆ THỐNG VĂN BẢN</h3></a>
+<a href="#" class="library-card lib-blue"><div class="ico">🎬</div><h3>THƯ VIỆN MEDIA</h3></a>
+<a href="#" class="library-card lib-green"><div class="ico">🎨</div><h3>BỘ NHẬN DIỆN</h3></a>
+<a href="#" class="library-card lib-yellow"><div class="ico">📕</div><h3>ẤN PHẨM</h3></a>
+<a href="#" class="library-card lib-green"><div class="ico">🧭</div><h3>TÀI LIỆU NGHIỆP VỤ</h3></a>
+</div>
+</div>
+</section>
+
+<section id="documents" class="docs">
+<div class="wrap">
+<div class="section-head"><div><h2>📖 HỆ THỐNG VĂN BẢN</h2><p>Tra cứu, xem và tải văn bản theo từ khóa, lĩnh vực và năm</p></div></div>
+<div class="search">
+<h3>TRA CỨU TÀI LIỆU</h3>
+<div class="searchgrid">
+<input id="q" placeholder="Từ khóa: tên tài liệu, ký hiệu...">
+<select id="field"><option value="">Lĩnh vực</option><option>Công tác Đội</option><option>Công tác thiếu nhi</option><option>Chương trình</option><option>Phong trào</option><option>Nghi thức Đội</option><option>Chỉ huy Đội</option><option>Tổng phụ trách Đội</option><option>Quyền trẻ em</option><option>Tổ chức</option></select>
+<select id="year"><option value="">Năm</option><option>2026</option><option>2025</option><option>2024</option></select>
+<button onclick="filterDocs()">TÌM KIẾM</button>
+</div>
+</div>
+<div class="table-wrap">
+<table><thead><tr><th>Loại</th><th>Ký hiệu</th><th>Ngày</th><th>Tên tài liệu</th><th>Tải về</th><th>Chi tiết</th></tr></thead>
+<tbody id="docs"></tbody></table>
+</div>
+<div class="empty" id="empty">Chưa có văn bản được cập nhật.</div>
+</div>
+</section>
+
+<section id="organization">
+<div class="wrap">
+<div class="section-head"><div><h2>TỔ CHỨC</h2><p>Thông tin về Hội đồng Đội Thành phố và hệ thống cơ sở</p></div></div>
+<div class="org-grid">
+<div class="orgbox"><h3>Hội đồng Đội Thành phố Hồ Chí Minh</h3><ul><li>📌 Giới thiệu chung</li><li>📌 Chức năng, nhiệm vụ</li><li>📌 Cơ cấu tổ chức</li><li>📌 Thường trực Hội đồng Đội</li><li>📌 Hội đồng Huấn luyện</li></ul></div>
+<div class="orgbox"><h3>Hệ thống cơ sở</h3><ul><li>🏫 Hội đồng Đội phường</li><li>🏫 Hội đồng Đội xã</li><li>🏝️ Hội đồng Đội đặc khu</li><li>🤝 Các đơn vị phối hợp</li><li>📊 Thông tin tổ chức Đội</li></ul></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap footergrid">
+<div><h3>HỘI ĐỒNG ĐỘI THÀNH PHỐ HỒ CHÍ MINH</h3><p>Cổng thông tin chính thức về công tác Đội và phong trào thiếu nhi Thành phố Hồ Chí Minh.</p><p>Địa chỉ: Số 01 Phạm Ngọc Thạch, TP. Hồ Chí Minh</p></div>
+<div><h3>LIÊN KẾT</h3><ul><li><a href="#news">Tin tức</a></li><li><a href="#activities">Hoạt động</a></li><li><a href="#library">Thư viện</a></li><li><a href="#organization">Tổ chức</a></li></ul></div>
+<div><h3>TÀI NGUYÊN</h3><ul><li><a href="#documents">Hệ thống văn bản</a></li><li><a href="#">Thư viện Media</a></li><li><a href="#">Ấn phẩm</a></li><li><a href="#">Tài liệu nghiệp vụ</a></li></ul></div>
+</div>
+<div class="wrap copy">© 2026 Hội đồng Đội Thành phố Hồ Chí Minh.</div>
+</footer>
+
+<script>
+/* Dữ liệu mẫu để kiểm tra giao diện. Khi kết nối CMS, thay bằng dữ liệu thật. */
+const documents=[];
+function renderDocs(list){
+ const body=document.getElementById('docs'),empty=document.getElementById('empty');
+ body.innerHTML='';
+ empty.style.display=list.length?'none':'block';
+ list.forEach(d=>{
+   const tr=document.createElement('tr');
+   tr.innerHTML=`<td><span class="pdf">PDF</span></td><td>${d.symbol}</td><td>${d.date}</td><td><strong>${d.title}</strong><br><small>${d.field}</small></td><td><a class="download" href="${d.file||'#'}">Tải về ↓</a></td><td><a class="download" href="#">Xem →</a></td>`;
+   body.appendChild(tr);
+ });
+}
+function filterDocs(){
+ const q=document.getElementById('q').value.toLowerCase().trim();
+ const f=document.getElementById('field').value;
+ const y=document.getElementById('year').value;
+ renderDocs(documents.filter(d=>(!q||(d.title+' '+d.symbol).toLowerCase().includes(q))&&(!f||d.field===f)&&(!y||d.year===y)));
+}
+renderDocs(documents);
+document.querySelectorAll('.navitem>button').forEach(b=>b.addEventListener('click',()=>{if(innerWidth<=700)b.parentElement.classList.toggle('open')}));
+</script>
+</body>
+</html>
